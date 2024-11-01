@@ -1,3 +1,63 @@
+# Compiled Object files
+*.o
+*.obj
 /dist
 /node_modules
+# Dependency directories
+.dSYM/
+/build/
+
+# Logs
+*.log
+
+# Debug files
+*.d
+*.ilk
+
+# Libraries
+*.lib
+*.a
+
+# Executables
+*.exe
+*.out
+*.dll
+
+# Test files
+/tests/
+
+# Temporary files
+*.tmp
+*.swp
+
+# Generated files
+*.gen
+*.md
+
+# Dockerfiles and images
+Dockerfile
+*.dockerignore
+*.dockerfile
+
+# Secrets
+*.pem
+*.key
+*.crt
+*.pfx
+*.p12
+
+# Environment files
 .env
+.env.local
+
+# Database files
+*.sqlite
+*.db
+
+# IDE files
+.idea/
+*.iml
+
+# Editor config files
+.vscode/
+.editorconfig
