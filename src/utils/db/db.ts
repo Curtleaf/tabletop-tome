@@ -18,7 +18,7 @@ export async function connectToDatabase() {
   try {
     const connection = await mongoose.connect(uri, {
       dbName: dbName, // Specify the database name here
-      // ... other Mongoose connection options ...
+      // ... other Mongoose connection options ... 
     });
 
     cachedConnection = connection;

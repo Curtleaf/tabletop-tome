@@ -34,4 +34,4 @@ export interface SystemConfiguration {
     rules: SystemRules;
     // ... other metadata (e.g., description, version, author)
   }
-  
+   

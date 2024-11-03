@@ -18,7 +18,7 @@ const app = express();
 
     // ... rest of your application logic ...
   } catch (err) {
-    console.error('Error connecting to database:', err);
+    console.error('Error connecting to database:', err); 
     process.exit(1); // Exit the process if the database connection fails
   }
 })();
