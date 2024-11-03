@@ -22,7 +22,7 @@ export interface SystemConfiguration {
       type: string; // e.g., "d20", "d100"
       dice: number; // Number of faces on the dice to roll
       quantity: number; // Number of times to roll the dice
-      modifier: (statValue: number) => number; // Function to calculate modifier based on stat
+      modifier: number
     };
     // ... other rules
   }

@@ -7,6 +7,10 @@ const systemSchema = new mongoose.Schema<System>({
 
 const SystemModel: Model<System> = mongoose.model<System>('System', systemSchema);
 
+export const getAllSystems = async (): Promise<System[]> => {
+  return SystemModel.find().exec();
+};
+
 export const addSystem = async (system: System): Promise<System> => {
   const newSystem = new SystemModel(system);
   return newSystem.save();

@@ -1,6 +1,11 @@
 import { System } from '../shared/types/system';
 import * as systemRepository from '../data-access/system';
 
+export const getAllSystems = async (): Promise<System[]> => {
+  // Perform any necessary validation or business logic before fetching
+  return systemRepository.getAllSystems();
+};
+
 export const createSystem = async (systemData: System): Promise<System> => {
   // Perform any necessary validation or business logic before saving
   return systemRepository.addSystem(systemData);

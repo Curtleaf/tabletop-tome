@@ -1,18 +1,22 @@
 import express from 'express';
 import { connectToDatabase } from './utils/db/db';
+import systemRoutes from './routes/system';
+
 const app = express();
 
 // Connect to the database
 (async () => {
   try {
-    const db = await connectToDatabase();
+    const connection = await connectToDatabase();
     console.log('Connected to MongoDB!');
 
     // Store the database connection in a global variable or pass it to your routes
-    app.locals.db = db; // Example: storing it in app.locals
+    app.locals.db = connection; // Example: storing it in app.locals
 
+    // *** Place the code snippet here ***
+    app.use('/api', systemRoutes); // Mount the routes on '/api' path
 
-    // ... rest of your application logic (routes, etc.) ...
+    // ... rest of your application logic ...
   } catch (err) {
     console.error('Error connecting to database:', err);
     process.exit(1); // Exit the process if the database connection fails
