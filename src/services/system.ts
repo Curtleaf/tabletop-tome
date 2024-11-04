@@ -1,22 +1,22 @@
-import { System } from '../shared/types/system';
+import { SystemType } from '../shared/models/system';
 import * as systemRepository from '../data-access/system';
 
-export const getAllSystems = async (): Promise<System[]> => {
+export const getAllSystems = async (): Promise<SystemType[]> => {
   // Perform any necessary validation or business logic before fetching
   return systemRepository.getAllSystems();
 };
 
-export const createSystem = async (systemData: System): Promise<System> => {
+export const createSystem = async (systemData: SystemType): Promise<SystemType> => {
   // Perform any necessary validation or business logic before saving
   return systemRepository.addSystem(systemData);
 };
 
-export const updateSystem = async (systemId: string, updates: Partial<System>): Promise<System | null> => {
+export const updateSystem = async (systemId: number, updates: Partial<SystemType>): Promise<SystemType | null> => {
   // Perform any necessary validation or business logic before updating
   return systemRepository.modifySystem(systemId, updates);
 };
 
-export const removeSystem = async (systemId: string): Promise<void> => {
-  // Perform any necessary checks or cleanup before deleting
-  await systemRepository.deleteSystem(systemId);
+export const removeSystem = async (systemId: number): Promise<boolean> => {
+  // Perform any necessary validation or business logic before deleting
+  return systemRepository.deleteSystem(systemId);
 };

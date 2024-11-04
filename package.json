@@ -1,22 +1,23 @@
 {
-  "name": "node-express-api-ts",
-  "description": "Simple api sample in Node",
+  "name": "tabletop-tome-api",
+  "description": "Simple API for tabletop games",
   "version": "1.0.0",
   "private": true,
   "main": "dist/index.js",
   "scripts": {
     "dev": "NODE_OPTIONS='--require dotenv/config' npm run build && nodemon --watch 'src/**' --ext 'ts,json' --exec 'npm run start'",
     "build": "tsc",
-    "start": "node dist/index.js"
+    "start": "node dist/index.js",
+    "test": "jest" 
   },
   "author": "Google LLC",
   "license": "Apache-2.0",
   "dependencies": {
+    "@types/express": "^4.17.21",
     "express": "^4.19.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.14.0",
-    "@types/express": "^5.0.0",
     "@types/node": "^20.12.12",
     "dotenv": "^16.4.5",
     "eslint": "^9.14.0",

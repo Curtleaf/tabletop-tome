@@ -1,35 +1,56 @@
 import express from 'express';
 import * as systemService from '../services/system';
-import { System } from '../shared/types/system';
+import { SystemType } from '../shared/models/system';
 
-const router = express.Router(); // Create a router instance
+const router = express.Router();
 
+// Get all systems
 router.get('/systems', async (req, res) => {
   try {
     const systems = await systemService.getAllSystems();
     res.json(systems);
   } catch (error) {
-    // Handle errors
+    res.status(500).json({ error: error.message });
   }
 });
 
+// Create a new system
 router.post('/systems', async (req, res) => {
   try {
-    console.log(req.body);
-    const systemData: System = req.body;
+    const systemData: SystemType = req.body;
     const newSystem = await systemService.createSystem(systemData);
     res.status(201).json(newSystem);
   } catch (error) {
-    // Handle errors
+    res.status(400).json({ error: error.message });
   }
 });
 
+// Update system by ID
 router.put('/systems/:systemId', async (req, res) => {
-  // ...
+  try {
+    const systemId = parseInt(req.params.systemId);
+    const updatedSystem = await systemService.updateSystem(systemId, req.body);
+    if (!updatedSystem) {
+      return res.status(404).json({ error: 'System not found' });
+    }
+    res.json(updatedSystem);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
 });
 
+// Delete system by ID
 router.delete('/systems/:systemId', async (req, res) => {
-  // ...
+  try {
+    const systemId = parseInt(req.params.systemId);
+    const deletedSystem = await systemService.removeSystem(systemId);
+    if (!deletedSystem) {
+      return res.status(404).json({ error: 'System not found' });
+    }
+    res.status(204).end();
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
 });
 
-export default router; // Export the router
+export default router;

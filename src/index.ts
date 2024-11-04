@@ -12,8 +12,9 @@ const app = express();
 
     // Store the database connection in a global variable or pass it to your routes
     app.locals.db = connection; // Example: storing it in app.locals
+ 
+    app.use(express.json());
 
-    // *** Place the code snippet here ***
     app.use('/api', systemRoutes); // Mount the routes on '/api' path
 
     // ... rest of your application logic ...
